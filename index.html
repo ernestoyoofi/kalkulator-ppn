@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./style.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Kalkulator PPN</title>
+    <meta property="og:title" content="Kalkulator PPN">
+    <meta name="description" content="Menghitung berapa sih harga sebenarnya jika terkena ppn?">
+    <meta property="og:description" content="Menghitung berapa sih harga sebenarnya jika terkena ppn?">
+    <meta name="applicationName" content="kalkulator">
+    <meta name="category" content="calculate,calculator,kalkulator,perhitungan,persamaan,dayajual">
+    <meta name="keywords" content="ppn,pajak,12%,pajak,pertambahan,nilai,2025 pajak">
+  </head>
+  <body>
+    <header class="w-full h-[50px]">
+      <div class="w-full max-w-[540px] m-auto flex items-center h-[50px]">
+        <div class="w-[calc(100%-220px)] flex px-3">
+          <h3 class="font-bold text-[1.1rem]">Kalkulator PPN</h3>
+        </div>
+        <div class="w-[220px] flex items-center justify-end pr-2" data-navigate="0">
+          <button class="p-2 px-3 w-[100px] text-center font-bold" data-view="1">Barang</button>
+          <button class="p-2 px-3 w-[100px] text-center font-bold" data-view="0">Belanjaan</button>
+          <div data-info="true" class="absolute w-[100px] h-[3px] bg-blue-600 rounded-sm mb-[-44px]" style="margin-right: 100px;"></div>
+        </div>
+      </div>
+    </header>
+    <div class="w-full max-w-[540px] m-auto py-2">
+      <div class="flex items-center px-3 py-2">
+        <p>Persentase PPN saat ini</p>
+        <select data-ppn-value></select>
+      </div>
+      <div class="f-full overflow-hidden">
+        <div data-tab-content class="flex items-start">
+          <div class="w-full px-3" data-tab-item>
+            <h3 class="text-[1.2rem] font-bold">Barang (Item)</h3>
+            <p>Kalkulasi dalam satu item atau satu barang yang dibeli</p>
+            <form data-calculate-single-item="true" data-calculate-item class="py-3">
+              <label class="block">
+                <b class="w-full block">Masukan harga</b>
+                <input name="harga" placeholder="Harga item jual" class="block w-full px-3 py-2 border-2 rounded-lg my-3"/>
+              </label>
+            </form>
+            <label data-calculate-single-item-result>
+              <label class="block">
+                <b class="w-full block">Harga total / harga jual</b>
+                <input name="hasil-harga" disabled class="block w-full px-3 py-2 border-2 rounded-lg my-3"/>
+              </label>
+            </label>
+          </div>
+          <div class="w-full px-3" data-tab-item>
+            <h3 class="text-[1.2rem] font-bold">Belanjaan (Total)</h3>
+            <blockquote class="p-2 px-3 rounded-lg bg-blue-600 text-white my-2">
+              <p>Klik "Hitung totalnya" untuk menghitungnya, karena tidak otomatis terhitung, cek validasi kembali dengan harga</p>
+            </blockquote>
+            <p>Kalkulasi setiap item atau barang yang dibeli</p>
+            <form data-calculate-multi-item class="py-3">
+              <div class="block" data-calculate-multi-item-card>
+                <b class="w-full block" contenteditable>Barang utama</b>
+                <input name="jumlah" placeholder="Jumlah item / barang" type="number" value="1" class="block w-full px-3 py-2 border-2 rounded-lg my-3"/>
+                <input name="harga" placeholder="Harga 1 item / barang" class="block w-full px-3 py-2 border-2 rounded-lg my-3"/>
+              </div>
+              <div id="adding-card"></div>
+              <div class="mt-8 w-full block">
+                <button class="block w-full px-3 py-2 rounded-lg my-3 font-bold bg-gray-300" data-calculate-multi-item-addcard>Tambahkan item lagi</button>
+                <button class="block w-full px-3 py-2 rounded-lg my-3 font-bold bg-blue-600 text-white" data-calculate-multi-item-resultview>Hitung totalnya</button>
+              </div>
+            </form>
+            <label data-calculate-multi-item-result>
+              <label class="block">
+                <b class="w-full block">Harga total / harga jual (Keranjang)</b>
+                <input name="hasil-harga" disabled class="block w-full px-3 py-2 border-2 rounded-lg my-3"/>
+              </label>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
